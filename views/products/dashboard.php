@@ -1,5 +1,8 @@
 <?php include '../../config/db.php'; ?>
-<?php include '../../middlewares/auth.php'; ?>
+<?php
+require_once '../../middlewares/role.php';
+requireRole(['Admin']);
+?>
 <?php
 $title =  'List Products | Shoesz';
 include('../layout/header.php');

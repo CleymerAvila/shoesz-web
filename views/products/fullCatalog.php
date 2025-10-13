@@ -1,5 +1,7 @@
-<?php require_once '../../middlewares/auth.php'; ?>
-<?php require_once '../../middlewares/guest.php'; ?>    
+<?php
+require_once '../../middlewares/role.php';
+requireRole(['Cliente', 'Admin']);
+?>   
 <?php require_once '../../config/db.php'; ?> 
 <?php
 $title = 'Full Catalog | Shoesz';
