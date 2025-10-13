@@ -1,0 +1,54 @@
+<?php require_once '../../middlewares/auth.php'; ?>
+<?php require_once '../../middlewares/guest.php'; ?>    
+<?php require_once '../../config/db.php'; ?> 
+<?php
+$title = 'Full Catalog | Shoesz';
+$active = 'catalog';
+include('../layout/header.php');
+
+// Obtener productos
+$query = "SELECT * FROM products ORDER BY brand, name";
+$stmt = $conn->prepare($query);
+$stmt->execute();
+$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$products = [];
+foreach ($rows as $row) {
+    $products[$row['brand']][] = $row; // agrupamos por marca
+}
+?>
+<?php include '../layout/navbar.php'; ?>
+
+<main class="catalog-container">
+    <h1 class="catalog-title">Catálogo Completo</h1>
+
+    <?php if (empty($products)): ?>
+        <p class="no-products">No hay productos disponibles.</p>
+    <?php else: ?>
+        <?php foreach ($products as $brand => $items): ?>
+            <section class="brand-section">
+                <h2 class="brand-title"><?= htmlspecialchars($brand) ?></h2>
+                <div class="grid-catalog">
+                    <?php foreach ($items as $product): ?>
+                        <div class="product-card">
+                            <img
+                                src="<?= '../../' . ltrim($product['image'], '/') ?>"
+                                alt="<?= htmlspecialchars($product['name']) ?>"
+                                class="product-image"
+                            />
+
+                            <div class="product-info">
+                                <h3><?= htmlspecialchars($product['name']) ?></h3>
+                                <p class="description"><?= htmlspecialchars($product['description']) ?></p>
+                                <p class="price">$<?= number_format($product['price'], 0, ',', '.') ?></p>
+                                <p class="stock">Stock: <?= $product['stock'] ?></p>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </section>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</main>
+
+<?php include '../layout/footer.php'; ?>

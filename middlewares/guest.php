@@ -1,0 +1,12 @@
+<?php 
+
+if(session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+$current_url = $_SERVER['REQUEST_URI'];
+
+if (isset($_SESSION['user_id']) && strpos($current_url, 'loginRegister.php') !== false) {
+    header('Location: '. '/shoesz-web/index.php');
+    exit();
+}
