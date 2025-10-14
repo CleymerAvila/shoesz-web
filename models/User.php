@@ -10,11 +10,19 @@ class User
     }
 
     public function register($name, $email, $password)
-    {
-        $sql = "INSERT INTO $this->table (name, email, password_hash) VALUES (?, ?, ?)";
-        $stmt = $this->conn->prepare($sql);
-        $password_hash = password_hash($password, PASSWORD_BCRYPT);
-        return $stmt->execute([$name, $email, $password_hash]);
+    {   
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+        $stmt = $this->conn->prepare("INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)");
+        $stmt->execute([$name, $email, $hashedPassword]);
+
+        $userId = $this->conn->lastInsertId();
+
+        // Agregar rol al usuario
+        $this->conn->prepare("INSERT INTO user_roles (user_id, role_id) VALUES (?, ?)")->execute([$userId, 2]);
+
+        return $userId;
+
     }
 
     public function login($email, $password)

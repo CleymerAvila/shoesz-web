@@ -4,6 +4,6 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: /shoesz-web/views/users/loginRegister.php');
+    header('Location: ' .$BASE_URL. 'views/users/loginRegister.php');
     exit();
 }

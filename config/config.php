@@ -1,3 +1,3 @@
 <?php
-define('BASE_URL', "/shoesz-web/");
+$BASE_URL = "https://" . $_SERVER['HTTP_HOST'] . "/";
 ?>

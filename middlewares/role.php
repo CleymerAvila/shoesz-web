@@ -1,9 +1,11 @@
 <?php
-session_start();
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 function requireRole(array $roles) {
+    require '../../config/config.php';
     if (!isset($_SESSION['user_id'])) {
-        header('Location: ../../views/users/loginRegister.php');
+        header('Location: ' . $BASE_URL . 'views/users/loginRegister.php');
         exit;
     }
 
@@ -12,9 +14,9 @@ function requireRole(array $roles) {
     if (!in_array($userRole, $roles)) {
         // No tiene permiso → redirigir
         if ($userRole === 'Cliente') {
-            header('Location: ../../views/products/fullCatalog.php');
+            header('Location: '. $BASE_URL .'views/products/fullCatalog.php');
         } else {
-            header('Location: ../../index.php');
+            header('Location: ' . $BASE_URL);
         }
         exit;
     }

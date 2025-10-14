@@ -1,6 +1,6 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+if(!defined('BASE_PATH')) {
+    require_once __DIR__ . '/../../config/config.php';
 }
 ?>
 <!DOCTYPE html>
@@ -10,6 +10,7 @@ if (session_status() === PHP_SESSION_NONE) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?php echo $title ;?></title>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="/shoesz-web/public/css/styles.css"> 
+  <link rel="stylesheet" href="<?=$BASE_URL?>public/css/styles.css"> 
+  <link rel="icon" type="image/x-icon" href="<?=$BASE_URL?>public/img/favicon.png">
 </head>
 <body>

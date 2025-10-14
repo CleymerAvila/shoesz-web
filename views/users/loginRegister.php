@@ -7,7 +7,7 @@ include('../layout/header.php');
 
 <div class="login-container">
     <div class="form-box login">
-        <form action="/shoesz-web/controllers/userController.php?action=login" method="POST">
+        <form action="<?=$BASE_URL?>controllers/userController.php?action=login" method="POST">
             <h1>Login</h1>
             <div class="input-box">
                 <input type="text" name="email" placeholder="Email" required>
@@ -43,7 +43,7 @@ include('../layout/header.php');
     </div>
 
     <div class="form-box register">
-        <form action="/shoesz-web/controllers/userController.php?action=register" method="POST">
+        <form action="<?=$BASE_URL?>controllers/userController.php?action=register" method="POST">
             <h1>Registration</h1>
             <div class="input-box">
                 <input type="text" name="name" placeholder="Name" required>

@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Función para cargar productos
     const loadProducts = async () => {
         try {
-            const response = await fetch('/shoesz-web/controllers/productController.php?action=getProducts');
+            const response = await fetch(`../../controllers/productController.php?action=getProducts`);
             const data = await response.json();
 
             if (data.ok) {
@@ -66,6 +66,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         catalog: document.querySelector('#catalog-link')
     };
 
+    navLinks.catalog.addEventListener('click', () => {
+        this.classList.toogle('active');
+    });
     if (sections.length > 0) { // Solo si estamos en index.php
         const observerOptions = {
             threshold: 0.3,
@@ -85,7 +88,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         case 'home':
                             navLinks.home?.classList.add('active');
                             break;
-                        case 'feactured-products':
+                        case 'featured-products':
                             navLinks.featured?.classList.add('active');
                             break;
                         case 'product-categories':
@@ -106,7 +109,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         function changeSlide() {
             index++;
             cards.style.transition = `transform 1s ease-in-out`;
-            cards.style.transform = `translateX(${-300 * index}px)`;
+            cards.style.transform = `translateX(${-400 * index}px)`;
 
             if (index >= totalCards - 1) {
                 setTimeout(() => {
@@ -137,6 +140,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const close = document.querySelectorAll('.modal .close');
 
     btnAddProduct.addEventListener('click', () => {
+        document.querySelector('.navbar').style.zIndex= '0';
         createModal.style.display = 'block';
     });
 
@@ -196,9 +200,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
     function loadProductData(productId) {
-        fetch(`/shoesz-web/controllers/productController.php?action=getProduct&product_id=${productId}`)
+        fetch(`../../controllers/productController.php?action=getProduct&product_id=${productId}`)
             .then(response => response.json())
             .then(data => {
+                document.querySelector('.navbar').style.zIndex= '0';
                 if (data.ok) {
                     const product = data.product;
 
@@ -242,7 +247,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const formData = new FormData();
                 formData.append('product_id', productId);
 
-                const response = await fetch('/shoesz-web/controllers/productController.php?action=deleteProduct', {
+                const response = await fetch('../../controllers/productController.php?action=deleteProduct', {
                     method: 'POST',
                     body: formData
                 });

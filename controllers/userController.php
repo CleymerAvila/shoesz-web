@@ -13,7 +13,7 @@ switch ($action) {
         if ($_POST) {
             $user->register($_POST['name'], $_POST['email'], $_POST['password']);
             echo 'Registrado correctamente';
-            //header('Location: ' . BASE_URL . 'login');
+            header('Location: ' . $BASE_URL . 'views/users/loginRegister.php');
         } else {
             echo 'Error al registrar';
         }
@@ -48,9 +48,9 @@ switch ($action) {
 
                 // Redirección según rol
                 if ($user['role_name'] === 'Admin') {
-                    header('Location: /shoesz-web/views/products/dashboard.php');
+                    header('Location: '. $BASE_URL . 'views/products/dashboard.php');
                 } else {
-                    header('Location: /shoesz-web/views/products/fullCatalog.php');
+                    header('Location: '. $BASE_URL . 'views/products/fullCatalog.php');
                 }
                 exit;
             } else {
@@ -64,7 +64,7 @@ switch ($action) {
     case 'logout': {
         if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'logout') {
             session_destroy();
-            header('Location: /shoesz-web/index.php');
+            header('Location: ' . $BASE_URL);
             exit();
         }
     }

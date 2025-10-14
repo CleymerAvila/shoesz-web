@@ -1,11 +1,16 @@
-<?php
-require_once '../../middlewares/role.php';
-requireRole(['Cliente', 'Admin']);
-?>   
-<?php require_once '../../config/db.php'; ?> 
-<?php
+<?php 
+require_once __DIR__ . '/../../config/config.php';
 $title = 'Full Catalog | Shoesz';
 $active = 'catalog';
+require_once __DIR__ . '/../layout/header.php';
+?>
+<?php
+include '../../config/db.php';
+include '../../middlewares/guest.php';
+include '../../middlewares/role.php';
+requireRole(['Cliente', 'Admin']);
+?>   
+<?php
 include('../layout/header.php');
 
 // Obtener productos
