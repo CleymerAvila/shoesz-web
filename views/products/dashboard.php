@@ -17,14 +17,17 @@ include '../layout/navbar.php';
 
 <div class="container dashboard">
     <div class="greet">
+        <a class="full-catalog-btn" href="<?= $BASE_URL ?>views/products/fullCatalog.php">
+            <i class='bx bx-left-arrow-alt'></i>
+            Full Catalog
+        </a>
         <h3>WELCOME BACK
             <?php echo $_SESSION['user_name']; ?>
-            <?php echo $_SESSION['user_role']; ?>
             , <br>How's it going here?</h3>
 
-        <h5>Dashboard</h5>
     </div>
     <div class="dashboard-container">
+        <h5>Dashboard</h5>
         <div class="option-box">
             <!--<div class="search-box" hidden>
                 <p>Search</p>

@@ -34,10 +34,12 @@ switch ($action) {
             }
 
             $newImageName = time() . '_' . preg_replace('/[^a-zA-Z0-9_\.-]/', '_', $image);
+            // $uploadDir = '/public/img/shoes/';
             $path = $uploadDir . $newImageName;
 
             // mover el archivo al destino 
             if (move_uploaded_file($tmp, $path)) {
+                $imagePath = '/public/img/shoes/' . $newImageName;
                 try {
                     $result = $product->register(
                         $_POST['name'],
@@ -45,7 +47,7 @@ switch ($action) {
                         $_POST['price'],
                         $_POST['stock'],
                         $_POST['brand'],
-                        $newImageName
+                        $imagePath
                     );
 
                     echo json_encode(['ok' => true, 'message' => 'Producto registrado correctamente']);

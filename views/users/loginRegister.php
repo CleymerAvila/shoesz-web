@@ -70,6 +70,7 @@ include('../layout/header.php');
 
     <div class="toggle-box">
         <div class="toggle-panel toggle-left">
+            <a href="<?=$BASE_URL?>">Back to Home</a>
             <h1>Hello, Welcome to Shoesz</h1>
             <p>Don't have an account?</p>
             <button class="btn register-btn">Register</button>

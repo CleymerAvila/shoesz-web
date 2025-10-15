@@ -1,7 +1,7 @@
 <?php 
+session_start();
 require_once __DIR__ . '/../../config/config.php';
 $title = 'Full Catalog | Shoesz';
-$active = 'catalog';
 require_once __DIR__ . '/../layout/header.php';
 ?>
 <?php
@@ -9,10 +9,10 @@ include '../../config/db.php';
 include '../../middlewares/guest.php';
 include '../../middlewares/role.php';
 requireRole(['Cliente', 'Admin']);
-?>   
+$active = 'catalog';
+require_once __DIR__ . '/../layout/navbar.php'; 
+?>
 <?php
-include('../layout/header.php');
-
 // Obtener productos
 $query = "SELECT * FROM products ORDER BY brand, name";
 $stmt = $conn->prepare($query);
@@ -24,13 +24,18 @@ foreach ($rows as $row) {
     $products[$row['brand']][] = $row; // agrupamos por marca
 }
 ?>
-<?php include '../layout/navbar.php'; ?>
 
 <main class="catalog-container">
-    <h1 class="catalog-title">Catálogo Completo</h1>
+    <?php if(isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Admin'):?>        
+        <a class="admin-dashboard-btn" href="<?= $BASE_URL ?>views/products/dashboard.php">
+            <i class='bx bxs-grid-alt'></i>
+            Dashboard
+        </a>
+    <?php endif;?>
+    <h1 class="catalog-title">Our Shoes Full Catalog</h1>
 
     <?php if (empty($products)): ?>
-        <p class="no-products">No hay productos disponibles.</p>
+        <p class="no-products">There are no products available.</p>
     <?php else: ?>
         <?php foreach ($products as $brand => $items): ?>
             <section class="brand-section">
@@ -57,5 +62,4 @@ foreach ($rows as $row) {
         <?php endforeach; ?>
     <?php endif; ?>
 </main>
-
 <?php include '../layout/footer.php'; ?>
