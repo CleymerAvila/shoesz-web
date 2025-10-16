@@ -5,19 +5,22 @@ An e-commerce web application specialized in shoe sales, offering a modern and u
 
 
 ## Main Sections
-<img width="1897" height="830" alt="image" src="https://github.com/user-attachments/assets/5c0fa991-940c-4c28-bd52-a07adccc4a00" />
-<img width="1886" height="829" alt="image" src="https://github.com/user-attachments/assets/2f9d4273-d829-41e1-bf8c-02f37ba129db" />
-<img width="1895" height="833" alt="image" src="https://github.com/user-attachments/assets/9198421d-da85-40ce-b242-9ef16f94a8eb" />
-<img width="1884" height="823" alt="image" src="https://github.com/user-attachments/assets/3dd6031e-a80d-4196-8a07-fac0fbd37668" />
+<img width="943" height="398" alt="image" src="https://github.com/user-attachments/assets/b5e059d3-e573-4287-9c9c-dcbd02f14fef" />
+<img width="939" height="485" alt="image" src="https://github.com/user-attachments/assets/a47bff39-e558-42bc-8731-6357faeccb04" />
+<img width="942" height="487" alt="image" src="https://github.com/user-attachments/assets/90b2dda1-c807-4840-907e-aec0b9bd96a4" />
+<img width="945" height="488" alt="image" src="https://github.com/user-attachments/assets/1095d0d8-a488-4a4e-b88f-cc676efd0f08" />
+
 
 
 ## Login and Register
-<img width="1886" height="982" alt="image" src="https://github.com/user-attachments/assets/7101cf0a-743e-4095-9ae7-eafbb345c871" />
-<img width="1883" height="979" alt="image" src="https://github.com/user-attachments/assets/cb3eb99c-a5bc-4ae6-92ed-b39aa182d516" />
+<img width="942" height="492" alt="image" src="https://github.com/user-attachments/assets/5e29bfdd-e056-4ab5-9751-6f7bdb2f6fd8" />
+<img width="937" height="487" alt="image" src="https://github.com/user-attachments/assets/ed58640e-87cd-42b9-aa8b-976c8755ce46" />
+
 
 
 ## Admin Dashboard Products CRUD Operations
-<img width="1886" height="985" alt="image" src="https://github.com/user-attachments/assets/1b3cc311-70fc-4818-aa5f-4aece590e2e4" />
+<img width="941" height="492" alt="image" src="https://github.com/user-attachments/assets/cebb8e78-39bf-4406-9adf-385a1fadc8e1" />
+
 
 
 ## Technologies Used
